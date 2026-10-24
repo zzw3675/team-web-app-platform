@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" font-family="'PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef2ff"/>
+      <stop offset="1" stop-color="#e0e7ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="620" fill="url(#bg)"/>
+  <text x="80" y="96" font-size="34" font-weight="700" fill="#1e293b">团队网页应用管理平台</text>
+  <text x="80" y="128" font-size="17" fill="#64748b">账号登录</text>
+
+  <rect x="80" y="164" width="360" height="360" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="120" y="212" font-size="16" fill="#334155">用户名</text>
+  <rect x="120" y="226" width="280" height="42" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="136" y="253" font-size="15" fill="#94a3b8">请输入用户名</text>
+  <text x="120" y="306" font-size="16" fill="#334155">密码</text>
+  <rect x="120" y="320" width="280" height="42" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="136" y="347" font-size="15" fill="#94a3b8">请输入密码</text>
+  <rect x="120" y="396" width="280" height="46" rx="8" fill="#2563eb"/>
+  <text x="260" y="426" font-size="17" font-weight="600" fill="#ffffff" text-anchor="middle">登 录</text>
+  <text x="120" y="480" font-size="14" fill="#3b82f6">忘记密码？</text>
+  <text x="360" y="480" font-size="14" fill="#3b82f6" text-anchor="end">注册账号</text>
+
+  <rect x="500" y="164" width="380" height="360" rx="14" fill="#1e3a8a"/>
+  <text x="540" y="224" font-size="22" font-weight="700" fill="#ffffff">一站式门户托管与治理</text>
+  <text x="540" y="270" font-size="16" fill="#bfdbfe">· 网页应用接入、审批与分发</text>
+  <text x="540" y="306" font-size="16" fill="#bfdbfe">· 四级角色权限与分组管理</text>
+  <text x="540" y="342" font-size="16" fill="#bfdbfe">· 全量操作审计与历史版本回溯</text>
+  <text x="540" y="378" font-size="16" fill="#bfdbfe">· 六套主题 · 明暗模式</text>
+  <text x="540" y="414" font-size="16" fill="#bfdbfe">· 内置记账本业务模块</text>
+</svg>

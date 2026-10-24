@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" font-family="'PingFang SC','Microsoft YaHei',sans-serif">
+  <rect width="960" height="620" fill="#f1f5f9"/>
+  <text x="40" y="60" font-size="26" font-weight="700" fill="#0f172a">主题设置</text>
+  <text x="40" y="90" font-size="15" fill="#64748b">六套主题色 + 明暗模式（跟随系统 / 亮 / 暗）</text>
+
+  <g font-size="13">
+    <rect x="40" y="120" width="130" height="90" rx="12" fill="#2563eb"/>
+    <text x="105" y="186" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="600">海蓝</text>
+    <rect x="190" y="120" width="130" height="90" rx="12" fill="#06b6d4"/>
+    <text x="255" y="186" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="600">青碧</text>
+    <rect x="340" y="120" width="130" height="90" rx="12" fill="#10b981"/>
+    <text x="405" y="186" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="600">翠绿</text>
+    <rect x="490" y="120" width="130" height="90" rx="12" fill="#8b5cf6"/>
+    <text x="555" y="186" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="600">紫罗兰</text>
+    <rect x="640" y="120" width="130" height="90" rx="12" fill="#f97316"/>
+    <text x="705" y="186" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="600">蜜橙</text>
+    <rect x="790" y="120" width="130" height="90" rx="12" fill="#ec4899"/>
+    <text x="855" y="186" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="600">玫红</text>
+  </g>
+
+  <g>
+    <rect x="40" y="250" width="430" height="300" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+    <rect x="40" y="250" width="110" height="300" fill="#f1f5f9" rx="14"/>
+    <text x="80" y="292" font-size="14" fill="#1e293b" font-weight="600">亮色</text>
+    <text x="200" y="300" font-size="18" font-weight="700" fill="#0f172a">应用管理平台</text>
+    <text x="200" y="330" font-size="13" fill="#64748b">亮色模式界面预览</text>
+    <rect x="200" y="360" width="220" height="44" rx="10" fill="#2563eb"/>
+    <text x="310" y="389" font-size="15" fill="#ffffff" text-anchor="middle">主要按钮</text>
+    <rect x="200" y="420" width="220" height="120" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="220" y="452" font-size="13" fill="#334155">侧边栏与卡片在亮色下</text>
+    <text x="220" y="474" font-size="13" fill="#334155">使用浅色背景与深色文字</text>
+
+    <rect x="490" y="250" width="430" height="300" rx="14" fill="#0f172a"/>
+    <rect x="490" y="250" width="110" height="300" fill="#1e293b" rx="14"/>
+    <text x="530" y="292" font-size="14" fill="#94a3b8" font-weight="600">暗色</text>
+    <text x="650" y="300" font-size="18" font-weight="700" fill="#ffffff">应用管理平台</text>
+    <text x="650" y="330" font-size="13" fill="#94a3b8">暗色模式界面预览</text>
+    <rect x="650" y="360" width="220" height="44" rx="10" fill="#3b82f6"/>
+    <text x="760" y="389" font-size="15" fill="#ffffff" text-anchor="middle">主要按钮</text>
+    <rect x="650" y="420" width="220" height="120" rx="12" fill="#1e293b" stroke="#334155"/>
+    <text x="670" y="452" font-size="13" fill="#cbd5e1">侧边栏与卡片在暗色下</text>
+    <text x="670" y="474" font-size="13" fill="#cbd5e1">使用深色背景与浅色文字</text>
+  </g>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" font-family="'PingFang SC','Microsoft YaHei',sans-serif">
+  <rect width="960" height="620" fill="#f1f5f9"/>
+
+  <rect width="960" height="56" fill="#1e3a8a"/>
+  <text x="24" y="36" font-size="19" font-weight="700" fill="#ffffff">团队网页应用管理平台</text>
+  <circle cx="920" cy="28" r="16" fill="#3b82f6"/>
+  <text x="920" y="34" font-size="14" fill="#ffffff" text-anchor="middle">管</text>
+
+  <rect x="0" y="56" width="200" height="564" fill="#ffffff" stroke="#e2e8f0"/>
+  <g font-size="15">
+    <text x="24" y="102" fill="#334155">📊  概览</text>
+    <rect x="0" y="116" width="200" height="40" fill="#eef2ff"/>
+    <text x="24" y="143" fill="#2563eb" font-weight="600">👥  用户管理</text>
+    <text x="24" y="183" fill="#475569">🗂  分组管理</text>
+    <text x="24" y="223" fill="#475569">🧩  门户管理</text>
+    <text x="24" y="263" fill="#475569">📐  模板管理</text>
+    <text x="24" y="303" fill="#475569">📜  审计日志</text>
+    <text x="24" y="343" fill="#475569">🧾  记账本</text>
+    <text x="24" y="383" fill="#475569">⚙️  系统设置</text>
+  </g>
+
+  <text x="230" y="110" font-size="24" font-weight="700" fill="#0f172a">用户管理</text>
+
+  <rect x="230" y="130" width="300" height="38" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="246" y="154" font-size="14" fill="#94a3b8">搜索用户…</text>
+  <rect x="760" y="128" width="120" height="42" rx="8" fill="#2563eb"/>
+  <text x="820" y="154" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">＋ 新建用户</text>
+
+  <g>
+    <rect x="230" y="196" width="650" height="330" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+    <g font-size="14" font-weight="600" fill="#64748b">
+      <text x="254" y="234">用户名</text>
+      <text x="430" y="234">角色</text>
+      <text x="560" y="234">分组</text>
+      <text x="700" y="234">状态</text>
+      <text x="820" y="234">操作</text>
+    </g>
+    <line x1="230" y1="248" x2="880" y2="248" stroke="#e2e8f0"/>
+    <g font-size="14" fill="#334155">
+      <text x="254" y="284">zhangsan</text>
+      <text x="430" y="284">平台管理员</text>
+      <text x="560" y="284">—</text>
+      <circle cx="700" cy="280" r="5" fill="#22c55e"/><text x="712" y="284">已启用</text>
+      <text x="820" y="284" fill="#3b82f6">编辑</text>
+      <text x="430" y="324">团队管理员</text>
+      <text x="560" y="324">研发组</text>
+      <circle cx="700" cy="320" r="5" fill="#22c55e"/><text x="712" y="324">已启用</text>
+      <text x="820" y="324" fill="#3b82f6">编辑</text>
+      <text x="430" y="364">普通成员</text>
+      <text x="560" y="364">产品组</text>
+      <circle cx="700" cy="360" r="5" fill="#94a3b8"/><text x="712" y="364">待审核</text>
+      <text x="820" y="364" fill="#3b82f6">审批</text>
+    </g>
+  </g>
+</svg>

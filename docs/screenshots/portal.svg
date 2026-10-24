@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" font-family="'PingFang SC','Microsoft YaHei',sans-serif">
+  <rect width="960" height="620" fill="#f8fafc"/>
+
+  <rect x="0" y="0" width="200" height="620" fill="#1e293b"/>
+  <text x="28" y="52" font-size="19" font-weight="700" fill="#ffffff">应用平台</text>
+  <line x1="20" y1="72" x2="180" y2="72" stroke="#334155"/>
+  <g font-size="15">
+    <rect x="0" y="86" width="200" height="42" fill="#334155"/>
+    <text x="28" y="113" fill="#ffffff">🏠  首页</text>
+    <text x="28" y="163" fill="#cbd5e1">🧩  我的门户</text>
+    <text x="28" y="213" fill="#cbd5e1">📐  模板中心</text>
+    <text x="28" y="263" fill="#cbd5e1">🧾  记账本</text>
+    <text x="28" y="313" fill="#cbd5e1">👤  个人中心</text>
+  </g>
+
+  <text x="240" y="70" font-size="26" font-weight="700" fill="#0f172a">我的门户</text>
+  <text x="240" y="98" font-size="15" fill="#64748b">团队已上线的网页应用</text>
+
+  <g font-size="14">
+    <rect x="240" y="130" width="220" height="170" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+    <rect x="264" y="158" width="46" height="46" rx="12" fill="#dbeafe"/>
+    <text x="287" y="187" font-size="24" fill="#2563eb" text-anchor="middle">📈</text>
+    <text x="264" y="230" font-weight="600" fill="#1e293b">数据看板</text>
+    <text x="264" y="256" font-size="13" fill="#94a3b8">团队运营指标总览</text>
+    <rect x="264" y="272" width="60" height="22" rx="6" fill="#eef2ff"/>
+    <text x="276" y="288" font-size="12" fill="#2563eb">所有人可见</text>
+    <rect x="480" y="130" width="220" height="170" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+    <rect x="504" y="158" width="46" height="46" rx="12" fill="#ecfdf5"/>
+    <text x="527" y="187" font-size="24" fill="#10b981" text-anchor="middle">🗂</text>
+    <text x="504" y="230" font-weight="600" fill="#1e293b">项目管理</text>
+    <text x="504" y="256" font-size="13" fill="#94a3b8">项目进度与任务协作</text>
+    <rect x="504" y="272" width="60" height="22" rx="6" fill="#eef2ff"/>
+    <text x="516" y="288" font-size="12" fill="#2563eb">研发组</text>
+    <rect x="720" y="130" width="200" height="170" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+    <rect x="744" y="158" width="46" height="46" rx="12" fill="#fef3c7"/>
+    <text x="767" y="187" font-size="24" fill="#f59e0b" text-anchor="middle">📚</text>
+    <text x="744" y="230" font-weight="600" fill="#1e293b">知识库</text>
+    <text x="744" y="256" font-size="13" fill="#94a3b8">团队文档沉淀</text>
+    <rect x="744" y="272" width="60" height="22" rx="6" fill="#eef2ff"/>
+    <text x="756" y="288" font-size="12" fill="#2563eb">所有人可见</text>
+    <rect x="240" y="330" width="220" height="170" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+    <rect x="264" y="358" width="46" height="46" rx="12" fill="#ede9fe"/>
+    <text x="287" y="387" font-size="24" fill="#8b5cf6" text-anchor="middle">🛒</text>
+    <text x="264" y="430" font-weight="600" fill="#1e293b">采购审批</text>
+    <text x="264" y="456" font-size="13" fill="#94a3b8">采购流程在线审批</text>
+    <rect x="264" y="472" width="60" height="22" rx="6" fill="#eef2ff"/>
+    <text x="276" y="488" font-size="12" fill="#2563eb">指定人</text>
+  </g>
+</svg>
