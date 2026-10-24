@@ -10,7 +10,6 @@ export interface AuthContextValue {
   token: string | null;
   isAuthenticated: boolean;
   loading: boolean;
-  /** 有 token 但资料加载失败（非 401）时的错误文案，用于区分「未登录」与「瞬时故障」 */
   authError: string | null;
   login: (data: LoginRequest) => Promise<LoginResponse>;
   logout: () => Promise<void>;

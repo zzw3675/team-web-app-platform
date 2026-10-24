@@ -17,9 +17,7 @@ interface ThemePalette {
   sidebarPrimary: string;
   sidebarAccent: string;
   sidebarAccentForeground: string;
-  /** 暗色模式下侧边栏悬停/激活底色（深色主题色底，保证与文字对比度） */
   sidebarAccentDark: string;
-  /** 暗色模式下侧边栏悬停/激活文字色（浅色主题色，保证在深底上可读） */
   sidebarAccentForegroundDark: string;
   sidebarRing: string;
 }
@@ -143,7 +141,6 @@ function applyTheme(theme: ThemeKey, dark: boolean): void {
   root.style.setProperty('--primary-border', palette.primaryBorder);
   root.style.setProperty('--chart-1', palette.chart1);
   root.style.setProperty('--sidebar-primary', palette.sidebarPrimary);
-  // 侧边栏悬停/激活色随明暗切换，避免暗色下写入浅色底导致文字不可读
   root.style.setProperty(
     '--sidebar-accent',
     dark ? palette.sidebarAccentDark : palette.sidebarAccent,
@@ -187,7 +184,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     if (t in THEMES) setThemeState(t);
   };
 
-  // 主题色与明暗模式任一变化都要重算：既切 .dark 类，也重新写入侧边栏配色
   useEffect(() => {
     localStorage.setItem(MODE_STORAGE_KEY, mode);
     const sync = (): void => {

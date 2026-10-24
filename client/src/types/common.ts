@@ -16,8 +16,6 @@ export type IUserProfile = {
   status: IUserStatus;
 };
 
-
-
 /**
  * 文件类型
  */

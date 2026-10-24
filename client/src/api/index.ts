@@ -52,7 +52,6 @@ http.defaults.baseURL = `${basePath}/api`;
 http.defaults.timeout = 15000;
 http.defaults.headers.post['Content-Type'] = 'application/json';
 
-// 请求拦截器：附加 token 和 CSRF
 http.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     const token = localStorage.getItem(TOKEN_KEY);
@@ -78,7 +77,6 @@ http.interceptors.request.use(
   (error: AxiosError) => Promise.reject(error),
 );
 
-// 响应拦截器：401 清 token + 跳登录
 http.interceptors.response.use(
   (response) => {
     if (response.data && typeof response.data === 'object' && !('data' in response.data) && !('error' in response.data)) {
@@ -109,13 +107,11 @@ http.interceptors.response.use(
   },
 );
 
-// 401 由响应拦截器统一清 token 并跳登录，页面无需再弹错误提示
 export function isUnauthorizedError(error: unknown): boolean {
   const axiosErr = error as AxiosError<ApiResponse> | undefined;
   return axiosErr?.response?.status === 401;
 }
 
-// 提取后端错误信息
 export function extractApiError(
   error: unknown,
   fallback = '请求失败，请稍后重试',
@@ -150,7 +146,6 @@ async function toBlobRequestError(error: unknown): Promise<Error> {
   return new Error('导出失败，请稍后重试');
 }
 
-// ---------------- Auth API ----------------
 export const authApi = {
   async login(data: LoginRequest): Promise<LoginResponse> {
     const res = await http.post<ApiResponse<LoginResponse>>('/auth/login', data);
@@ -201,7 +196,6 @@ export const authApi = {
   },
 };
 
-// ---------------- 人员目录（已审核用户，登录即可查） ----------------
 export const usersDirectoryApi = {
   async list(keyword: string, limit = 20): Promise<UserDirectoryItem[]> {
     const res = await http.get<ApiResponse<{ items: UserDirectoryItem[] }>>(
@@ -221,7 +215,6 @@ export const usersDirectoryApi = {
   },
 };
 
-// ---------------- Admin Users API ----------------
 export interface UserGroupCount {
   groupId: string | null;
   count: number;
@@ -266,7 +259,6 @@ export const adminUsersApi = {
     return res.data.data as User;
   },
 
-  // 各分组真实人数（groupId 为 null 表示未分组）
   async listGroupCounts(): Promise<UserGroupCount[]> {
     const res = await http.get<ApiResponse<{ items: UserGroupCount[] }>>(
       '/admin/users/group-counts',
@@ -305,7 +297,6 @@ export const adminUsersApi = {
   },
 };
 
-// ---------------- Admin Groups API ----------------
 export const adminGroupsApi = {
   async list(params: {
     page?: number;
@@ -368,7 +359,6 @@ export const adminGroupsApi = {
   },
 };
 
-// ---------------- Groups Options API（任意已登录用户可调用） ----------------
 export interface GroupOption {
   id: string;
   name: string;
@@ -383,7 +373,6 @@ export const groupsApi = {
   },
 };
 
-// ---------------- Admin Templates API ----------------
 export const adminTemplatesApi = {
   async list(params: {
     page?: number;
@@ -418,7 +407,6 @@ export const adminTemplatesApi = {
   },
 };
 
-// ---------------- Admin Pages API ----------------
 export const adminPagesApi = {
   async list(params: {
     page?: number;
@@ -492,7 +480,6 @@ export const adminPagesApi = {
     return res.data.data as void;
   },
 
-  // 物理删除（仅回收站中的门户）
   async deleteForever(id: string): Promise<void> {
     const res = await http.post<ApiResponse<void>>(
       `/admin/pages/${id}/delete-forever`,
@@ -506,7 +493,6 @@ export const adminPagesApi = {
   },
 };
 
-// ---------------- Admin Audit Logs API ----------------
 export const adminAuditLogsApi = {
   async list(params: {
     page?: number;
@@ -524,7 +510,6 @@ export const adminAuditLogsApi = {
   },
 };
 
-// ---------------- Admin Settings API ----------------
 export const adminSettingsApi = {
   async getSiteName(): Promise<string> {
     const res = await http.get<ApiResponse<{ items: Setting[] }>>(
@@ -544,7 +529,6 @@ export const adminSettingsApi = {
   },
 };
 
-// ---------------- Admin Email (SMTP) API ----------------
 export const adminEmailApi = {
   async getConfig(): Promise<SmtpConfigResponse> {
     const res = await http.get<ApiResponse<SmtpConfigResponse>>(
@@ -568,7 +552,6 @@ export const adminEmailApi = {
   },
 };
 
-// ---------------- Public Settings API ----------------
 export const publicSettingsApi = {
   async getSiteName(): Promise<string> {
     const res = await http.get<ApiResponse<{ siteName: string }>>(
@@ -578,7 +561,6 @@ export const publicSettingsApi = {
   },
 };
 
-// ---------------- Pages API (front) ----------------
 export const pagesApi = {
   async list(params: { page?: number; pageSize?: number } = {}): Promise<
     ListResponse<Page>
@@ -614,7 +596,6 @@ export const pagesApi = {
   },
 };
 
-// ---------------- Templates API (front) ----------------
 export const templatesApi = {
   async list(params: { page?: number; pageSize?: number } = {}): Promise<
     ListResponse<Template>
@@ -627,9 +608,7 @@ export const templatesApi = {
   },
 };
 
-// ---------------- Jizhang API ----------------
 export const jizhangApi = {
-  // 项目管理
   async listProjects(params: {
     page?: number;
     pageSize?: number;
@@ -670,7 +649,6 @@ export const jizhangApi = {
     return res.data.data as void;
   },
 
-  // 记录列表
   async listRecords(
     projectId: string,
     params: JizhangRecordListQuery = {},
@@ -719,7 +697,6 @@ export const jizhangApi = {
     return res.data.data as void;
   },
 
-  // 回收站
   async listRecycle(
     projectId: string,
     params: { page?: number; pageSize?: number } = {},
@@ -731,7 +708,6 @@ export const jizhangApi = {
     return res.data.data as ListResponse<JizhangRecord>;
   },
 
-  // 分类汇总
   async categorySummary(
     projectId: string,
     params: JizhangSummaryQuery = {},
@@ -743,7 +719,6 @@ export const jizhangApi = {
     return res.data.data as JizhangCategorySummary[];
   },
 
-  // CSV 导出
   async exportCsv(projectId: string): Promise<void> {
     let csvData: Blob;
     try {
@@ -769,7 +744,6 @@ export const jizhangApi = {
   },
 };
 
-// ---------------- History API ----------------
 export const historyApi = {
   getProjectHistory(
     projectId: string,

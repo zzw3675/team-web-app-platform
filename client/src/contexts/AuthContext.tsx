@@ -21,8 +21,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [loading, setLoading] = useState<boolean>(true);
   const [authError, setAuthError] = useState<string | null>(null);
 
-  // 拉取用户资料：仅 401 视为 token 失效；其余失败（后端重启 502 / 网络抖动）
-  // 保留 token，只记录错误文案，交由 ProtectedRoute 展示错误态而不是踢回登录页。
   const loadProfile = useCallback(async (): Promise<void> => {
     setAuthError(null);
     try {
@@ -40,7 +38,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   }, []);
 
-  // 初始化：从 localStorage 读 token 并拉取用户信息
   useEffect(() => {
     const init = async (): Promise<void> => {
       const savedToken: string | null = localStorage.getItem(TOKEN_KEY);
