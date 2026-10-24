@@ -1,0 +1,380 @@
+{
+  "paths": {
+    "/openapi/jizhang/projects": {
+      "get": {
+        "operationId": "listProjects",
+        "summary": "查询记账本项目列表（分页）",
+        "parameters": [
+          { "in": "query", "name": "page", "required": false, "schema": { "type": "integer", "default": 1 }, "description": "页码，从 1 开始", "example": 1 },
+          { "in": "query", "name": "pageSize", "required": false, "schema": { "type": "integer", "default": 20, "maximum": 100 }, "description": "每页条数", "example": 20 }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["items", "total", "page", "pageSize"],
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "description": "记账本项目",
+                        "example": {
+                          "id": "39d03cc9-4adc-4afd-9c3d-18190fb64962",
+                          "app": "jizhang",
+                          "title": "2026 年团队活动经费",
+                          "ownerId": "b3184072-35ec-4cbb-864a-0ab58c2993bb",
+                          "readScope": "all",
+                          "readUserIds": [],
+                          "editScope": "owner",
+                          "editUserIds": [],
+                          "createdAt": "2026-10-23T14:03:18.061Z",
+                          "updatedAt": "2026-10-23T14:03:18.061Z"
+                        }
+                      }
+                    },
+                    "total": { "type": "integer", "description": "总条数", "example": 12 },
+                    "page": { "type": "integer", "description": "当前页码", "example": 1 },
+                    "pageSize": { "type": "integer", "description": "每页条数", "example": 20 }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/openapi/jizhang/projects/{id}": {
+      "get": {
+        "operationId": "getProject",
+        "summary": "查询单个记账本项目详情",
+        "parameters": [
+          { "in": "path", "name": "id", "required": true, "schema": { "type": "string" }, "description": "项目 ID", "example": "39d03cc9-4adc-4afd-9c3d-18190fb64962" }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "记账本项目（深层省略，结构见 example）",
+                  "example": {
+                    "id": "39d03cc9-4adc-4afd-9c3d-18190fb64962",
+                    "app": "jizhang",
+                    "title": "2026 年团队活动经费",
+                    "ownerId": "b3184072-35ec-4cbb-864a-0ab58c2993bb",
+                    "readScope": "all",
+                    "readUserIds": [],
+                    "editScope": "owner",
+                    "editUserIds": [],
+                    "createdAt": "2026-10-23T14:03:18.061Z",
+                    "updatedAt": "2026-10-23T14:03:18.061Z"
+                  }
+                }
+              }
+            }
+          },
+          "404": { "description": "项目不存在" }
+        }
+      }
+    },
+    "/openapi/jizhang/projects/{projectId}/records/summary/category": {
+      "get": {
+        "operationId": "getCategorySummary",
+        "summary": "按分类汇总项目收支金额",
+        "parameters": [
+          { "in": "path", "name": "projectId", "required": true, "schema": { "type": "string" }, "description": "项目 ID", "example": "39d03cc9-4adc-4afd-9c3d-18190fb64962" },
+          { "in": "query", "name": "dateFrom", "required": false, "schema": { "type": "string", "format": "date" }, "description": "起始日期（含）", "example": "2026-10-01" },
+          { "in": "query", "name": "dateTo", "required": false, "schema": { "type": "string", "format": "date" }, "description": "结束日期（含）", "example": "2026-10-31" },
+          { "in": "query", "name": "incomeExpense", "required": false, "schema": { "type": "string", "enum": ["income", "expense"] }, "description": "收支类型过滤", "example": "expense" }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["category", "totalAmount", "count"],
+                    "properties": {
+                      "category": { "type": "string", "description": "分类名称", "example": "餐饮" },
+                      "totalAmount": { "type": "string", "description": "金额合计（字符串形式的十进制数）", "example": "58.50" },
+                      "count": { "type": "integer", "description": "记录条数", "example": 3 }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/openapi/jizhang/projects/{projectId}/records": {
+      "get": {
+        "operationId": "listRecords",
+        "summary": "查询项目记账记录列表（分页）",
+        "parameters": [
+          { "in": "path", "name": "projectId", "required": true, "schema": { "type": "string" }, "description": "项目 ID", "example": "39d03cc9-4adc-4afd-9c3d-18190fb64962" },
+          { "in": "query", "name": "page", "required": false, "schema": { "type": "integer", "default": 1 }, "description": "页码，从 1 开始", "example": 1 },
+          { "in": "query", "name": "pageSize", "required": false, "schema": { "type": "integer", "default": 20, "maximum": 100 }, "description": "每页条数", "example": 20 },
+          { "in": "query", "name": "category", "required": false, "schema": { "type": "string" }, "description": "按分类过滤", "example": "餐饮" },
+          { "in": "query", "name": "incomeExpense", "required": false, "schema": { "type": "string", "enum": ["income", "expense"] }, "description": "按收支类型过滤", "example": "expense" },
+          { "in": "query", "name": "dateFrom", "required": false, "schema": { "type": "string", "format": "date" }, "description": "起始日期（含）", "example": "2026-10-01" },
+          { "in": "query", "name": "dateTo", "required": false, "schema": { "type": "string", "format": "date" }, "description": "结束日期（含）", "example": "2026-10-31" },
+          { "in": "query", "name": "includeDeleted", "required": false, "schema": { "type": "boolean" }, "description": "是否包含已删除（回收站）记录", "example": false }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["items", "total", "page", "pageSize"],
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "description": "记账记录（深层省略，结构见 example）",
+                        "example": {
+                          "id": "e2ff246c-3294-4124-b58e-1a2106de9280",
+                          "recordDate": "2026-10-23",
+                          "incomeExpense": "expense",
+                          "category": "餐饮",
+                          "amount": "58.50",
+                          "remark": "午餐",
+                          "recorderId": "b3184072-35ec-4cbb-864a-0ab58c2993bb",
+                          "recorderName": "recorder",
+                          "isDeleted": false,
+                          "projectId": "39d03cc9-4adc-4afd-9c3d-18190fb64962",
+                          "createdAt": "2026-10-23T14:03:18.213Z",
+                          "updatedAt": "2026-10-23T14:03:18.213Z"
+                        }
+                      }
+                    },
+                    "total": { "type": "integer", "description": "总条数", "example": 128 },
+                    "page": { "type": "integer", "description": "当前页码", "example": 1 },
+                    "pageSize": { "type": "integer", "description": "每页条数", "example": 20 }
+                  }
+                }
+              }
+            }
+          },
+          "404": { "description": "项目不存在" }
+        }
+      },
+      "post": {
+        "operationId": "createRecord",
+        "summary": "在项目下新增一条记账记录",
+        "parameters": [
+          { "in": "path", "name": "projectId", "required": true, "schema": { "type": "string" }, "description": "项目 ID", "example": "39d03cc9-4adc-4afd-9c3d-18190fb64962" }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["recordDate", "incomeExpense", "category", "amount"],
+                "properties": {
+                  "recordDate": { "type": "string", "format": "date", "description": "记账日期", "example": "2026-10-23" },
+                  "incomeExpense": { "type": "string", "enum": ["income", "expense"], "description": "收支类型", "example": "expense" },
+                  "category": { "type": "string", "maxLength": 20, "description": "分类，如 餐饮/交通/购物/工资 等", "example": "餐饮" },
+                  "amount": { "type": "string", "description": "金额（字符串形式的十进制数，最多两位小数）", "example": "58.50" },
+                  "remark": { "type": "string", "maxLength": 500, "description": "备注", "example": "团队午餐" },
+                  "recorderId": { "type": "string", "format": "uuid", "description": "记录人用户 ID（可选，不传为空）", "example": "b3184072-35ec-4cbb-864a-0ab58c2993bb" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "创建后的记账记录（深层省略，结构见 example）",
+                  "example": {
+                    "id": "e2ff246c-3294-4124-b58e-1a2106de9280",
+                    "recordDate": "2026-10-23",
+                    "incomeExpense": "expense",
+                    "category": "餐饮",
+                    "amount": "58.50",
+                    "remark": "团队午餐",
+                    "projectId": "39d03cc9-4adc-4afd-9c3d-18190fb64962",
+                    "isDeleted": false,
+                    "createdAt": "2026-10-23T14:03:18.213Z",
+                    "updatedAt": "2026-10-23T14:03:18.213Z"
+                  }
+                }
+              }
+            }
+          },
+          "404": { "description": "项目不存在" },
+          "400": { "description": "参数校验失败" }
+        }
+      }
+    },
+    "/openapi/jizhang/projects/{projectId}/records/{id}": {
+      "patch": {
+        "operationId": "updateRecord",
+        "summary": "修改一条记账记录（修改前自动保存历史快照）",
+        "parameters": [
+          { "in": "path", "name": "projectId", "required": true, "schema": { "type": "string" }, "description": "项目 ID", "example": "39d03cc9-4adc-4afd-9c3d-18190fb64962" },
+          { "in": "path", "name": "id", "required": true, "schema": { "type": "string" }, "description": "记录 ID", "example": "e2ff246c-3294-4124-b58e-1a2106de9280" }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "recordDate": { "type": "string", "format": "date", "description": "记账日期", "example": "2026-10-23" },
+                  "incomeExpense": { "type": "string", "enum": ["income", "expense"], "description": "收支类型", "example": "expense" },
+                  "category": { "type": "string", "maxLength": 20, "description": "分类", "example": "交通" },
+                  "amount": { "type": "string", "description": "金额（字符串形式的十进制数）", "example": "68.50" },
+                  "remark": { "type": "string", "maxLength": 500, "description": "备注", "example": "午餐+咖啡" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "修改后的记账记录（深层省略，结构见 example）",
+                  "example": {
+                    "id": "e2ff246c-3294-4124-b58e-1a2106de9280",
+                    "recordDate": "2026-10-23",
+                    "incomeExpense": "expense",
+                    "category": "交通",
+                    "amount": "68.50",
+                    "remark": "午餐+咖啡",
+                    "projectId": "39d03cc9-4adc-4afd-9c3d-18190fb64962",
+                    "isDeleted": false,
+                    "createdAt": "2026-10-23T14:03:18.213Z",
+                    "updatedAt": "2026-10-23T14:10:00.000Z"
+                  }
+                }
+              }
+            }
+          },
+          "404": { "description": "记录或项目不存在" },
+          "400": { "description": "参数校验失败" }
+        }
+      },
+      "delete": {
+        "operationId": "deleteRecord",
+        "summary": "软删除一条记账记录（移入回收站，可恢复，删除前自动保存历史快照）",
+        "parameters": [
+          { "in": "path", "name": "projectId", "required": true, "schema": { "type": "string" }, "description": "项目 ID", "example": "39d03cc9-4adc-4afd-9c3d-18190fb64962" },
+          { "in": "path", "name": "id", "required": true, "schema": { "type": "string" }, "description": "记录 ID", "example": "e2ff246c-3294-4124-b58e-1a2106de9280" }
+        ],
+        "responses": {
+          "200": { "description": "删除成功" },
+          "404": { "description": "记录或项目不存在" }
+        }
+      }
+    },
+    "/openapi/pages": {
+      "get": {
+        "operationId": "listPages",
+        "summary": "查询门户列表（分页，只读）",
+        "parameters": [
+          { "in": "query", "name": "page", "required": false, "schema": { "type": "integer", "default": 1 }, "description": "页码，从 1 开始", "example": 1 },
+          { "in": "query", "name": "pageSize", "required": false, "schema": { "type": "integer", "default": 20, "maximum": 100 }, "description": "每页条数", "example": 20 }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["items", "total", "page", "pageSize"],
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "description": "门户（深层省略，结构见 example）",
+                        "example": {
+                          "id": "0d3f1a2b-1111-4cbb-864a-0ab58c2993bb",
+                          "title": "团队门户",
+                          "slug": "team-portal",
+                          "type": "app",
+                          "visibility": "all",
+                          "visibleUserIds": [],
+                          "sortOrder": 1,
+                          "enabled": true,
+                          "appMode": true,
+                          "templateName": "记账本",
+                          "createdAt": "2026-10-23T13:45:46.114Z",
+                          "updatedAt": "2026-10-23T13:45:46.114Z"
+                        }
+                      }
+                    },
+                    "total": { "type": "integer", "description": "总条数", "example": 5 },
+                    "page": { "type": "integer", "description": "当前页码", "example": 1 },
+                    "pageSize": { "type": "integer", "description": "每页条数", "example": 20 }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/openapi/pages/{id}": {
+      "get": {
+        "operationId": "getPage",
+        "summary": "查询单个门户详情",
+        "parameters": [
+          { "in": "path", "name": "id", "required": true, "schema": { "type": "string" }, "description": "门户 ID", "example": "0d3f1a2b-1111-4cbb-864a-0ab58c2993bb" }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "门户详情（深层省略，结构见 example）",
+                  "example": {
+                    "id": "0d3f1a2b-1111-4cbb-864a-0ab58c2993bb",
+                    "title": "团队门户",
+                    "slug": "team-portal",
+                    "type": "app",
+                    "visibility": "all",
+                    "visibleUserIds": [],
+                    "sortOrder": 1,
+                    "enabled": true,
+                    "appMode": true,
+                    "templateName": "记账本",
+                    "createdAt": "2026-10-23T13:45:46.114Z",
+                    "updatedAt": "2026-10-23T13:45:46.114Z"
+                  }
+                }
+              }
+            }
+          },
+          "404": { "description": "门户不存在" }
+        }
+      }
+    }
+  }
+}
