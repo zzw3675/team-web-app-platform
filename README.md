@@ -2,6 +2,26 @@
 
 网页应用托管与治理系统。基于 **NestJS + React 19 + PostgreSQL** 的全栈应用，面向团队内部提供统一的网页应用（门户）接入、审批、分发、审计与运营治理能力，并内置一套记账本（Jizhang）模块作为业务示例。
 
+## 界面预览
+
+> 以下为界面结构示意图，帮助你快速了解整体样式与布局。
+
+**登录页**
+
+<img src="docs/screenshots/login.svg" width="720" alt="登录页示意" />
+
+**管理后台 · 用户管理**
+
+<img src="docs/screenshots/admin.svg" width="720" alt="用户管理示意" />
+
+**门户首页**
+
+<img src="docs/screenshots/portal.svg" width="720" alt="门户首页示意" />
+
+**主题设置 · 六色 + 明暗**
+
+<img src="docs/screenshots/themes.svg" width="720" alt="主题设置示意" />
+
 ## 核心功能
 
 - **账号体系与四级角色**
